@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+p{
+    line-height: 1.3em;
+}
+
 body, html{
     margin: 0;
     padding: 0;
@@ -101,6 +105,47 @@ nav ul li a{
     width: 100%;
 }
 
+#cards{
+    padding: 2vh 0;
+    background-color: #325bc5;
+}
+
+#cards h2{
+    text-align: center;
+    color: #fdbd18;
+}
+
+#cards section{
+    box-sizing: border-box;
+    padding: 0 2vw;
+}
+
+#cards section .card{
+    background-color: white;
+    margin-bottom: 10vh;
+    padding-bottom: 2vh;
+    border-radius: 20px;
+}
+
+#cards section .card:last-child{
+    margin-bottom: 0vh;
+}
+
+#cards section .card img{
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+#cards section .card h3{
+    text-align: center;
+}
+
+#cards section .card p{
+    text-align: justify;
+    padding: 0 4vw;
+}
+
 footer{
     padding: 2vh 0;
     background-color: #1949ae;
@@ -151,9 +196,24 @@ footer p{
 
     #quemSomos .img{
         width: 48vw;
+        height: 60vh;
     }
 
     #quemSomos .img img{
         height: 60vh;
+    }
+
+    #cards section{
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    #cards section .card{
+        width: 30%;
+        height: 580px;
+    }
+
+    #cards section .card p{
+        padding: 0 2vw;
     }
 }
