@@ -1,0 +1,78 @@
+main{
+    background-color: #6481f2;
+    padding: 10px;
+}
+
+main > form h1{
+    text-align: center;
+    color: #325bc5;
+}
+
+main > form{
+    width: 90%;
+    margin: 10vh auto;
+    border-radius: 10px;
+    background-color: white;
+    padding: 15px 5px;
+}
+
+main > form label{
+    display: block;
+    width: 90%;
+    text-align: left;
+    font-size: 1.1em;
+    margin: 0 5%;
+    padding: 4px 10px;
+}
+
+main > form input{
+    width: 90%;
+    margin: 0 5%;
+    padding: 7px 10px;
+    border-radius: 5px;
+    border: .5px solid #ccc;
+}
+
+main > form .form-group{
+    margin-bottom: 20px;
+}
+
+main .form-group:has(.enviar){
+    display: flex;
+    justify-content: center;
+}
+
+main .enviar{
+    padding: 7px 20px;
+    border-radius: 5px;
+    border: 1px solid #fdbd18;
+    background-color: #fdbd18;
+    font-size: 1em;
+}
+
+@media (min-width: 992px) {
+    main > form{
+        width: 40%;
+        margin: 10vh auto;
+        border-radius: 10px;
+        background-color: white;
+        padding: 15px 10px;
+    }
+
+    main > form label{
+        display: block;
+        width: 70%;
+        text-align: left;
+        font-size: 1.1em;
+        margin: 0 15%;
+        padding: 4px 10px;
+    }
+    
+    main > form input{
+        width: 70%;
+        margin: 0 15%;
+        padding: 7px 10px;
+        border-radius: 5px;
+        border: .5px solid #ccc;
+    }
+}
