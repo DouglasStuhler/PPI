@@ -23,7 +23,7 @@
         </ul>
     </nav>
     <main>
-        <form action="#" method="POST">
+        <form id="formulario" action="#" method="POST">
             <h1>Login</h1>
             <div class="form-group">
                 <label for="user">Usuário</label>
@@ -42,4 +42,13 @@
         <p>&copy; Todos os direitos são reservados à Vitalize.</p>
     </footer>
 </body>
+<script>
+    const form = document.querySelector('#formulario');
+
+    form.onsubmit = (e) => {
+        e.preventDefault();
+
+        window.location.assign('acessoRestrito');
+    }
+</script>
 </html>

@@ -1,0 +1,84 @@
+*{
+    box-sizing: border-box;
+}
+
+p{
+    line-height: 1.3em;
+}
+
+body, html{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+header{
+    height: 13vh;
+    /* border-bottom: 1px solid #1949ae; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header > img{
+    height: 8vh;
+}
+
+nav{
+    background-color: #222;
+    position: sticky;
+    top: 0;
+}
+
+nav ul{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0;
+    height: 6vh;
+    padding: 0;
+}
+
+nav ul li{
+    flex-shrink: 1;
+    text-align: center;
+    padding: 0px 5px;
+}
+
+nav ul li{
+    list-style: none;
+}
+
+nav ul li a{
+    color: white;
+    /* color: #fdbd18; */
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: .01em;
+}
+
+main{
+    min-height: 60vh;
+}
+
+main > h1{
+    text-align: center;
+}
+
+
+footer{
+    padding: 2vh 0;
+    background-color: #222;
+}
+
+footer p{
+    text-align: center;
+    color: white;
+}
+
+/* Responsividade Breakpoints */
+
+@media (min-width: 992px){
+    
+}
