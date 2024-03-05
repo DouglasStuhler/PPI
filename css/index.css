@@ -80,6 +80,7 @@ nav ul li a{
 .default .txt{
     padding: 2vh 4vw;
     box-sizing: border-box;
+    line-height: 1.1em;
 }
 
 .default .txt h2{
@@ -106,10 +107,15 @@ nav ul li a{
 
 #quemSomos .txt h2{
     color: #325bc5;
+    margin-top: 10px;
 }
 
 #quemSomos .img img{
     width: 100%;
+}
+
+#quemSomos .txt{
+    height: 60vh;
 }
 
 #cards{
