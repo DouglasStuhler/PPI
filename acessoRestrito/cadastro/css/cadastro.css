@@ -1,0 +1,29 @@
+#formCad{
+    width: 90%;
+    margin: 10px auto;
+}
+
+#formCad div.form-group > label{
+    font-size: 1.1em;
+    padding-left: 10px;
+    padding-bottom: 5px;
+}
+
+#formCad fieldset{
+    padding: 15px 0;
+}
+
+#formCad .row{
+    margin-bottom: 10px;
+}
+
+.center-direita{
+    display: flex;
+    justify-content: center;
+}
+
+@media (min-width: 998px){
+    .center-direita{
+        justify-content: right;
+    }
+}
