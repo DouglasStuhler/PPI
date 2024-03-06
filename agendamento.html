@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitalize - Agendamento</title>
+
+    <!-- Links CSS -->
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/agendamento.css">
+</head>
+
+<body>
+    <header>
+        <img src="images/logomarca.png" alt="Logomarca da Vitalize">
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="flexPeso"><a href="#">Galeria</a></li>
+            <li class="flexPeso"><a href="#">Novo Endereço</a></li>
+            <li class="flexPeso"><a href="agendamento.html">Agendamento</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+    <main>
+        <article id="agendamento" class="default">
+            <section>
+                <div>
+                    <div class="txt">
+                        <h2>Agendamento</h2>
+                    </div>
+                    <form action="#" method="post">
+                        <fieldset>
+                            <legend>Dados da Consulta</legend>
+                            <div>
+                                <label for="convenio">Convênio:</label>
+                                <select id="convenio" name="convenio" required>
+                                    <option value=""> Selecione um Convênio</option>
+                                    <option value="unimed"> Unimed </option>
+                                    <option value="sulamerica"> SulAmerica </option>
+                                    <option value="particular"> Particular </option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div>
+                                    <label for="especialidade">Especialidade Médica:</label>
+                                    <select id="especialidade" name="especialidade" onchange="selectMedicos()" required>
+                                        <option value="">Selecione uma Especialidade</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label for="medico">Nome do Médico:</label>
+                                    <select id="medico" name="medico" required>
+                                        <option value="">Selecione uma Especialidade primeiro
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div>
+                                    <label for="data">Data do Agendamento:</label>
+                                    <input type="date" id="data" name="data" onchange="selectHorario()" required>
+                                </div>
+                                <div>
+                                    <label for="horario">Horário do Agendamento:</label>
+                                    <select id="horario" name="horario" required>
+                                        <option value="">Horário Consulta</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Dados do Paciente</legend>
+                            <div>
+                                <label for="nome">Nome do Paciente:</label>
+                                <input type="text" id="nome" name="nome" required>
+                            </div>
+                            <div>
+                                <label for="sexo">Sexo</label>
+                                <select name="sexo" id="sexo" class="form-control" required>
+                                    <option value="">Selecione uma opção</option>
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Feminino</option>
+                                    <option value="N">Prefiro não informar</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="telefone">Telefone para Contato:</label>
+                                <input type="tel" id="telefone" name="telefone" placeholder="34 99999-9999"
+                                    pattern="[0-9]{2} [0-9]{5}-[0-9]{4}" maxlength="11" required>
+                            </div>
+                            <div>
+                                <label for="email">E-mail:</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </fieldset>
+                        <div>
+                            <button class="button">Agendar Consulta</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </article>
+    </main>
+    <footer>
+        <p>&copy; Todos os direitos são reservados à Vitalize.</p>
+    </footer>
+    <script src="js/agendamento.js"></script>
+</body>
+
+</html>
