@@ -22,6 +22,10 @@
     justify-content: center;
 }
 
+#formCad .medico{
+    display: none;
+}
+
 @media (min-width: 998px){
     .center-direita{
         justify-content: right;
