@@ -114,10 +114,6 @@ nav ul li a{
     width: 100%;
 }
 
-#quemSomos .txt{
-    height: 60vh;
-}
-
 #cards{
     padding: 2vh 0;
     background-color: #325bc5;
@@ -201,6 +197,10 @@ footer p{
         display: flex;
         justify-content: space-between;
         box-sizing: border-box;
+    }
+
+    #quemSomos .txt{
+        height: 60vh;
     }
 
     #quemSomos .txt h2{
