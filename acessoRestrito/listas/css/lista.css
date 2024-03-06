@@ -1,0 +1,9 @@
+#tabela .dt-center{
+    text-align: center;
+    vertical-align: middle;
+}
+
+#tabela{
+    width: 95%;
+    margin: 20px auto;
+}
