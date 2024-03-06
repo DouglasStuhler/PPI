@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vitalize - Novo Endereço</title>
+  <!-- Links CSS -->
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/address.css">
+</head>
+<body>
+  <header>
+    <img src="images/logomarca.png" alt="Logomarca da Vitalize">
+  </header>
+  <nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="galery.html">Galeria</a></li>
+        <li><a href="address.html">Novo Endereço</a></li>
+        <li><a href="#">Agendamento</a></li>
+        <li><a href="login.html">Login</a></li>
+    </ul>
+  </nav>
+    <form>
+      
+      <h2>Novo Endereço</h2>
+      
+      <div class="form-group small">
+        <label for="campoCEP" class="labels">CEP: </label>
+        <input type="text" name="campoCEP" id="campoCEP" class="inputs" pattern="\d{5}\-\d{3}" required>
+      </div>
+      <div class="form-group larger">
+        <label for="campoLogradouro" class="labels">Logradouro: </label>
+        <input type="text" name="campoLogradouro" id="campoLogradouro" class="inputs" required>
+      </div>
+
+      <div class="form-group small">
+          <label for="campoEstado">Estado:</label>
+          <select id="campoEstado" name="campoEstado" class="inputs" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="AC">AC</option>
+            <option value="AL">AL</option>
+            <option value="AP">AP</option>
+            <option value="AM">AM</option>
+            <option value="BA">BA</option>
+            <option value="CE">CE</option>
+            <option value="DF">DF</option>
+            <option value="ES">ES</option>
+            <option value="GO">GO</option>
+            <option value="MA">MA</option>
+            <option value="MT">MT</option>
+            <option value="MS">MS</option>
+            <option value="MG">MG</option>
+            <option value="PA">PA</option>
+            <option value="PB">PB</option>
+            <option value="PR">PR</option>
+            <option value="PE">PE</option>
+            <option value="PI">PI</option>
+            <option value="RJ">RJ</option>
+            <option value="RN">RN</option>
+            <option value="RS">RS</option>
+            <option value="RO">RO</option>
+            <option value="RR">RR</option>
+            <option value="SC">SC</option>
+            <option value="SP">SP</option>
+            <option value="SE">SE</option>
+            <option value="TO">TO</option>
+          </select>
+        </div> 
+        <div class="form-group larger">
+          <label for="campoCidade" class="labels">Cidade: </label>
+          <input type="text" name="campoCidade" id="campoCidade" class="inputs" required>
+        </div>   
+     
+      </div>
+      <button>Cadastrar</button>
+    </form>
+  <footer>
+    <p>&copy; Todos os direitos são reservados à Vitalize.</p>
+  </footer>
+
+
+</body>
+</html>
