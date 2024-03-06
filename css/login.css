@@ -23,6 +23,7 @@ main > form label{
     font-size: 1.1em;
     margin: 0 5%;
     padding: 4px 10px;
+    color: #555;
 }
 
 main > form input{
