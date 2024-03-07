@@ -78,7 +78,7 @@ h2 {
   vertical-align: middle;
 }
 
-.card h2 ~ a {
+.description {
   font-family: "Museo1";
   font-size: 14px;
   text-decoration: none;
@@ -86,15 +86,48 @@ h2 {
   color: #858585;
 }
 
-.card h2 ~ a:hover {
+.description span {
+  cursor: pointer;
+}
+
+.description span:hover {
   transition: 0.5s;
   color: #2b2a2a;
 }
 
-.description {
+.modal a {
+  text-decoration: none;
+  color: #fff;
+  background-color: #1949ae;
+  border: 1px solid blue;
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 5px;
+  box-shadow: 2px 1px 2px blue;
+}
+
+.modal a:hover {
+  background-color: #165cf2;
+}
+
+.modal {
   max-width: 300px;
   color: #858585;
   display: none;
+}
+
+.mostraModal {
+  display: block;
+}
+
+footer{
+    padding: 2vh 0;
+    background-color: #1949ae;
+}
+
+footer p{
+    text-align: center;
+    color: white;
 }
 
 @media (max-width: 480px){
@@ -106,7 +139,7 @@ h2 {
     font-size: 14px;
   }
 
-  .card h2 ~ a {
+  .card h2 ~ span {
     font-size: 12px;
   }
 }
