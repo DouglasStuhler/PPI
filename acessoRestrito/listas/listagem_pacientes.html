@@ -29,18 +29,20 @@
         <div class="table-responsive">
             <table id="tabela" class="table table-striped table-hover">
                 <thead>
-                    <th class="dt-center">#</th>
-                    <th class="dt-center">Nome</th>
-                    <th class="dt-center">Sexo</th>
-                    <th class="dt-center">Email</th>
-                    <th class="dt-center">Contato</th>
-                    <th class="dt-center">CEP</th>
-                    <th class="dt-center">Logradouro</th>
-                    <th class="dt-center">Cidade</th>
-                    <th class="dt-center">Estado</th>
-                    <th class="dt-center">Peso</th>
-                    <th class="dt-center">Altura</th>
-                    <th class="dt-center">Tipo Sanguineo</th>
+                    <tr>
+                        <th class="dt-center">#</th>
+                        <th class="dt-center">Nome</th>
+                        <th class="dt-center">Sexo</th>
+                        <th class="dt-center">Email</th>
+                        <th class="dt-center">Contato</th>
+                        <th class="dt-center">CEP</th>
+                        <th class="dt-center">Logradouro</th>
+                        <th class="dt-center">Cidade</th>
+                        <th class="dt-center">Estado</th>
+                        <th class="dt-center">Peso</th>
+                        <th class="dt-center">Altura</th>
+                        <th class="dt-center">Tipo Sanguineo</th>
+                    </tr>
                 </thead>
                 <tbody></tbody>
             </table>
@@ -50,94 +52,92 @@
     <footer>
         <p>&copy; Todos os direitos são reservados à Vitalize.</p>
     </footer>
-</body>
+    <script>
+        // Alimenta Tabela
+        const dados = [
+            {
+            codigo: '1',
+            nome: 'José',
+            sexo: 'Masculino',
+            email: 'jose@teste.com',
+            telefone: '34 99999-9997',
+            cep: '38400-655',
+            logradouro: 'Av. Rondom Pacheco, 100',
+            cidade: 'Uberlândia',
+            estado: 'MG',
+            peso: '80 kg',
+            altura: '1,67 m', 
+            tipoSanguineo: 'A+'
+            },
+            {
+            codigo: '2',
+            nome: 'Luzia',
+            sexo: 'Feminino',
+            email: 'luzia@teste.com',
+            telefone: '34 99999-8997',
+            cep: '38400-200',
+            logradouro: 'Rua Tiradentes, 774',
+            cidade: 'Uberlândia',
+            estado: 'MG',
+            peso: '65 kg',
+            altura: '1,58 m', 
+            tipoSanguineo: 'B-',  
+            },
+            {
+            codigo: '3',
+            nome: 'Maria',
+            sexo: 'Feminino',
+            email: 'maria@teste.com',
+            telefone: '34 99999-8007',
+            cep: '38444-254',
+            logradouro: 'Rua Tupaciguara, 100',
+            cidade: 'Uberlândia',
+            estado: 'MG',
+            peso: '73 kg',
+            altura: '1,63 m', 
+            tipoSanguineo: 'AB-',
+            },
+            {
+            codigo: '4',
+            nome: 'Carlos',
+            sexo: 'Masculino',
+            email: 'carlos@teste.com',
+            telefone: '34 97999-9997',
+            cep: '38400-192',
+            logradouro: 'Av. Fundinho, 301',
+            cidade: 'Uberlândia',
+            estado: 'MG',
+            peso: '79 kg',
+            altura: '1,72 m', 
+            tipoSanguineo: 'O+',  
+            }
+        ];
 
-<script>
-    // Alimenta Tabela
-    const dados = [
-        {
-          codigo: '1',
-          nome: 'José',
-          sexo: 'Masculino',
-          email: 'jose@teste.com',
-          telefone: '34 99999-9997',
-          cep: '38400-655',
-          logradouro: 'Av. Rondom Pacheco, 100',
-          cidade: 'Uberlândia',
-          estado: 'MG',
-          peso: '80 kg',
-          altura: '1,67 m', 
-          tipoSanguineo: 'A+'
-        },
-        {
-          codigo: '2',
-          nome: 'Luzia',
-          sexo: 'Feminino',
-          email: 'luzia@teste.com',
-          telefone: '34 99999-8997',
-          cep: '38400-200',
-          logradouro: 'Rua Tiradentes, 774',
-          cidade: 'Uberlândia',
-          estado: 'MG',
-          peso: '65 kg',
-          altura: '1,58 m', 
-          tipoSanguineo: 'B-',  
-        },
-        {
-          codigo: '3',
-          nome: 'Maria',
-          sexo: 'Feminino',
-          email: 'maria@teste.com',
-          telefone: '34 99999-8007',
-          cep: '38444-254',
-          logradouro: 'Rua Tupaciguara, 100',
-          cidade: 'Uberlândia',
-          estado: 'MG',
-          peso: '73 kg',
-          altura: '1,63 m', 
-          tipoSanguineo: 'AB-',
-        },
-        {
-          codigo: '4',
-          nome: 'Carlos',
-          sexo: 'Masculino',
-          email: 'carlos@teste.com',
-          telefone: '34 97999-9997',
-          cep: '38400-192',
-          logradouro: 'Av. Fundinho, 301',
-          cidade: 'Uberlândia',
-          estado: 'MG',
-          peso: '79 kg',
-          altura: '1,72 m', 
-          tipoSanguineo: 'O+',  
+        const tabela = document.querySelector('#tabela tbody');
+
+        let text = '';
+
+        
+        for(i = 0; i < dados.length; i++){
+            text = '<td class="dt-center">'+dados[i]['codigo']+'</td>'
+            text += '<td class="dt-center">'+dados[i]['nome']+'</td>'
+            text += '<td class="dt-center">'+dados[i]['sexo']+'</td>'
+            text += '<td class="dt-center">'+dados[i]['email']+'</td>'
+            text += '<td class="dt-center">'+dados[i]['telefone']+'</td>'
+            text += '<td class="dt-center">'+dados[i]['cep']+'</td>'
+            text += '<td class="dt-center">'+dados[i]['logradouro']+'</td>'
+            text += '<td class="dt-center">'+dados[i]['cidade']+'</td>'
+            text += '<td class="dt-center">'+dados[i]['estado']+'</td>'
+            text += '<td class="dt-center">'+dados[i]['peso']+'</td>'
+            text += '<td class="dt-center">'+dados[i]['altura']+'</td>'
+            text += '<td class="dt-center">'+dados[i]['tipoSanguineo']+'</td>'
+
+            let el = document.createElement('tr');
+
+            el.innerHTML = text;
+
+            tabela.appendChild(el);
         }
-    ];
-
-    const tabela = document.querySelector('#tabela tbody');
-
-    let text = '';
-
-    
-    for(i = 0; i < dados.length; i++){
-        text = '<td class="dt-center">'+dados[i]['codigo']+'</td>'
-        text += '<td class="dt-center">'+dados[i]['nome']+'</td>'
-        text += '<td class="dt-center">'+dados[i]['sexo']+'</td>'
-        text += '<td class="dt-center">'+dados[i]['email']+'</td>'
-        text += '<td class="dt-center">'+dados[i]['telefone']+'</td>'
-        text += '<td class="dt-center">'+dados[i]['cep']+'</td>'
-        text += '<td class="dt-center">'+dados[i]['logradouro']+'</td>'
-        text += '<td class="dt-center">'+dados[i]['cidade']+'</td>'
-        text += '<td class="dt-center">'+dados[i]['estado']+'</td>'
-        text += '<td class="dt-center">'+dados[i]['peso']+'</td>'
-        text += '<td class="dt-center">'+dados[i]['altura']+'</td>'
-        text += '<td class="dt-center">'+dados[i]['tipoSanguineo']+'</td>'
-
-        let el = document.createElement('tr');
-
-        el.innerHTML = text;
-
-        tabela.appendChild(el);
-    }
-
-</script>
+    </script>
+</body>
 </html>

@@ -41,14 +41,15 @@
     <footer>
         <p>&copy; Todos os direitos são reservados à Vitalize.</p>
     </footer>
+    <script>
+        const form = document.querySelector('#formulario');
+
+        form.onsubmit = (e) => {
+            e.preventDefault();
+
+            window.location.assign('acessoRestrito');
+        }
+    </script>
 </body>
-<script>
-    const form = document.querySelector('#formulario');
 
-    form.onsubmit = (e) => {
-        e.preventDefault();
-
-        window.location.assign('acessoRestrito');
-    }
-</script>
 </html>

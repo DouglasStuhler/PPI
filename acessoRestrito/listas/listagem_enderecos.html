@@ -29,11 +29,13 @@
         <div class="table-responsive">
             <table id="tabela" class="table table-striped table-hover">
                 <thead>
-                    <th class="dt-center">#</th>
-                    <th class="dt-center">CEP</th>
-                    <th class="dt-center">Logradouro</th>
-                    <th class="dt-center">Cidade</th>
-                    <th class="dt-center">Estado</th>
+                    <tr>
+                        <th class="dt-center">#</th>
+                        <th class="dt-center">CEP</th>
+                        <th class="dt-center">Logradouro</th>
+                        <th class="dt-center">Cidade</th>
+                        <th class="dt-center">Estado</th>
+                    </tr>
                 </thead>
                 <tbody></tbody>
             </table>
@@ -43,58 +45,57 @@
     <footer>
         <p>&copy; Todos os direitos são reservados à Vitalize.</p>
     </footer>
-</body>
 
-<script>
-    // Alimenta Tabela
-    const dados = [
-        {
-          codigo: '1',
-          cep: '38400-655',
-          logradouro: 'Av. Rondom Pacheco, 100',
-          cidade: 'Uberlândia',
-          estado: 'MG',
-        },
-        {
-          codigo: '2',
-          cep: '38400-200',
-          logradouro: 'Rua Tiradentes, 774',
-          cidade: 'Uberlândia',
-          estado: 'MG',
-        },
-        {
-          codigo: '3',
-          cep: '38444-254',
-          logradouro: 'Rua Tupaciguara, 100',
-          cidade: 'Uberlândia',
-          estado: 'MG',
-        },
-        {
-          codigo: '4',
-          cep: '38400-192',
-          logradouro: 'Av. Fundinho, 301',
-          cidade: 'Uberlândia',
-          estado: 'MG',
+    <script>
+        // Alimenta Tabela
+        const dados = [
+            {
+            codigo: '1',
+            cep: '38400-655',
+            logradouro: 'Av. Rondom Pacheco, 100',
+            cidade: 'Uberlândia',
+            estado: 'MG',
+            },
+            {
+            codigo: '2',
+            cep: '38400-200',
+            logradouro: 'Rua Tiradentes, 774',
+            cidade: 'Uberlândia',
+            estado: 'MG',
+            },
+            {
+            codigo: '3',
+            cep: '38444-254',
+            logradouro: 'Rua Tupaciguara, 100',
+            cidade: 'Uberlândia',
+            estado: 'MG',
+            },
+            {
+            codigo: '4',
+            cep: '38400-192',
+            logradouro: 'Av. Fundinho, 301',
+            cidade: 'Uberlândia',
+            estado: 'MG',
+            }
+        ];
+
+        const tabela = document.querySelector('#tabela tbody');
+
+        let text = '';
+
+        for(i = 0; i < dados.length; i++){
+            text = '<td class="dt-center">'+dados[i]['codigo']+'</td>'
+            text += '<td class="dt-center">'+dados[i]['cep']+'</td>'
+            text += '<td class="dt-center">'+dados[i]['logradouro']+'</td>'
+            text += '<td class="dt-center">'+dados[i]['cidade']+'</td>'
+            text += '<td class="dt-center">'+dados[i]['estado']+'</td>'
+
+            let el = document.createElement('tr');
+
+            el.innerHTML = text;
+
+            tabela.appendChild(el);
         }
-    ];
-
-    const tabela = document.querySelector('#tabela tbody');
-
-    let text = '';
-
-    for(i = 0; i < dados.length; i++){
-        text = '<td class="dt-center">'+dados[i]['codigo']+'</td>'
-        text += '<td class="dt-center">'+dados[i]['cep']+'</td>'
-        text += '<td class="dt-center">'+dados[i]['logradouro']+'</td>'
-        text += '<td class="dt-center">'+dados[i]['cidade']+'</td>'
-        text += '<td class="dt-center">'+dados[i]['estado']+'</td>'
-
-        let el = document.createElement('tr');
-
-        el.innerHTML = text;
-
-        tabela.appendChild(el);
-    }
-
-</script>
+    </script>
+</body>
 </html>

@@ -29,15 +29,17 @@
         <div class="table-responsive">
             <table id="tabela" class="table table-striped table-hover">
                 <thead>
-                    <th class="dt-center">#</th>
-                    <th class="dt-center">Nome</th>
-                    <th class="dt-center">Data</th>
-                    <th class="dt-center">Horário</th>
-                    <th class="dt-center">Contato</th>
-                    <th class="dt-center">Especialidade</th>
-                    <th class="dt-center">Médico</th>
-                    <th class="dt-center">Convênio</th>
-                    <th class="dt-center">Sexo</th>
+                    <tr>
+                        <th class="dt-center">#</th>
+                        <th class="dt-center">Nome</th>
+                        <th class="dt-center">Data</th>
+                        <th class="dt-center">Horário</th>
+                        <th class="dt-center">Contato</th>
+                        <th class="dt-center">Especialidade</th>
+                        <th class="dt-center">Médico</th>
+                        <th class="dt-center">Convênio</th>
+                        <th class="dt-center">Sexo</th>
+                    </tr>
                 </thead>
                 <tbody></tbody>
             </table>
@@ -47,59 +49,57 @@
     <footer>
         <p>&copy; Todos os direitos são reservados à Vitalize.</p>
     </footer>
-</body>
+    <script>
+        // Alimenta Tabela
+        const dados = [
+            {
+                codigo: '1',
+                nome: 'José',
+                data: '08/03/2024',
+                horario: '09:00',
+                telefone: '34 99999-9997',
+                email: 'jose@teste.com',
+                especialidade: 'Cardiologia',
+                medico: 'Dr. Dráuzio Varella',
+                convenio: 'Unimed',
+                sexo: 'Masculino',
+            },
+            {
+                codigo: '4',
+                nome: 'Carlos',
+                data: '08/03/2024',
+                horario: '16:00',
+                telefone: '34 97999-9997',
+                email: 'carlos@teste.com',
+                especialidade: 'Cardiologia',
+                medico: 'Dr. Dráuzio Varella',
+                convenio: 'Particular',
+                sexo: 'Masculino',
+            }
+        ];
 
-<script>
-    // Alimenta Tabela
-    const dados = [
-        {
-            codigo: '1',
-            nome: 'José',
-            data: '08/03/2024',
-            horario: '09:00',
-            telefone: '34 99999-9997',
-            email: 'jose@teste.com',
-            especialidade: 'Cardiologia',
-            medico: 'Dr. Dráuzio Varella',
-            convenio: 'Unimed',
-            sexo: 'Masculino',
-        },
-        {
-            codigo: '4',
-            nome: 'Carlos',
-            data: '08/03/2024',
-            horario: '16:00',
-            telefone: '34 97999-9997',
-            email: 'carlos@teste.com',
-            especialidade: 'Cardiologia',
-            medico: 'Dr. Dráuzio Varella',
-            convenio: 'Particular',
-            sexo: 'Masculino',
+        const tabela = document.querySelector('#tabela tbody');
+
+        let text = '';
+
+        
+        for(i = 0; i < dados.length; i++){
+            text = '<td class="dt-center">'+dados[i]['codigo']+'</td>'
+            text += '<td class="dt-center">'+dados[i]['nome']+'</td>'
+            text += '<td class="dt-center">'+dados[i]['data']+'</td>'
+            text += '<td class="dt-center">'+dados[i]['horario']+'</td>'
+            text += '<td class="dt-center"><p>Email: '+dados[i]['email']+'</p><p>Telefone: '+dados[i]['telefone']+'</p></td>';
+            text += '<td class="dt-center">'+dados[i]['especialidade']+'</td>'
+            text += '<td class="dt-center">'+dados[i]['medico']+'</td>'
+            text += '<td class="dt-center">'+dados[i]['convenio']+'</td>'
+            text += '<td class="dt-center">'+dados[i]['sexo']+'</td>'
+
+            let el = document.createElement('tr');
+
+            el.innerHTML = text;
+
+            tabela.appendChild(el);
         }
-    ];
-
-    const tabela = document.querySelector('#tabela tbody');
-
-    let text = '';
-
-    
-    for(i = 0; i < dados.length; i++){
-        text = '<td class="dt-center">'+dados[i]['codigo']+'</td>'
-        text += '<td class="dt-center">'+dados[i]['nome']+'</td>'
-        text += '<td class="dt-center">'+dados[i]['data']+'</td>'
-        text += '<td class="dt-center">'+dados[i]['horario']+'</td>'
-        text += '<td class="dt-center"><p>Email: '+dados[i]['email']+'</p><p>Telefone: '+dados[i]['telefone']+'</p></td>';
-        text += '<td class="dt-center">'+dados[i]['especialidade']+'</td>'
-        text += '<td class="dt-center">'+dados[i]['medico']+'</td>'
-        text += '<td class="dt-center">'+dados[i]['convenio']+'</td>'
-        text += '<td class="dt-center">'+dados[i]['sexo']+'</td>'
-
-        let el = document.createElement('tr');
-
-        el.innerHTML = text;
-
-        tabela.appendChild(el);
-    }
-
-</script>
+    </script>
+</body>
 </html>
