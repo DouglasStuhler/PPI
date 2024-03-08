@@ -38,7 +38,7 @@ main > form .form-group{
     margin-bottom: 20px;
 }
 
-main .form-group:has(.enviar){
+main .divEnviar{
     display: flex;
     justify-content: center;
 }
