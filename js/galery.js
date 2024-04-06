@@ -1,10 +1,9 @@
-document.addEventListener("DOMContentLoaded", () => {
-
+window.onload = () => {
   const modals = document.querySelectorAll(".modal");
 
-  modals.forEach( modal => {
+  for (let modal of modals) {
     let span = modal.parentNode.querySelector("span");
     span.onclick = () => modal.classList.add("mostraModal");
-    span.ondblclick = () => modal.classList.remove("mostraModal");
-  });
-});
+    modal.onmouseout = () => modal.classList.remove("mostraModal");
+  }
+};
