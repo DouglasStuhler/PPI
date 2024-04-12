@@ -44,7 +44,7 @@
             $this->especialidade = $especialidade;
         }
 
-        function getFuncionarios($pdo){
+        static function getFuncionarios($pdo){
             try{
                 $sql = <<<SQL
                     SELECT Pessoa.nome, Pessoa.sexo, Pessoa.email, Pessoa.telefone, Pessoa.CEP, Pessoa.logradouro, Pessoa.cidade, Pessoa.estado, Funcionario.dt_contrato, Funcionario.salario, Funcionario.id_pessoa, Funcionario.id_funcionario, Medico.crm, Medico.especialidade

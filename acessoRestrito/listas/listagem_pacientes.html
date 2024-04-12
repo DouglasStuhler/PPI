@@ -53,91 +53,46 @@
         <p>&copy; Todos os direitos são reservados à Vitalize.</p>
     </footer>
     <script>
-        // Alimenta Tabela
-        const dados = [
-            {
-            codigo: '1',
-            nome: 'José',
-            sexo: 'Masculino',
-            email: 'jose@teste.com',
-            telefone: '34 99999-9997',
-            cep: '38400-655',
-            logradouro: 'Av. Rondom Pacheco, 100',
-            cidade: 'Uberlândia',
-            estado: 'MG',
-            peso: '80 kg',
-            altura: '1,67 m', 
-            tipoSanguineo: 'A+'
-            },
-            {
-            codigo: '2',
-            nome: 'Luzia',
-            sexo: 'Feminino',
-            email: 'luzia@teste.com',
-            telefone: '34 99999-8997',
-            cep: '38400-200',
-            logradouro: 'Rua Tiradentes, 774',
-            cidade: 'Uberlândia',
-            estado: 'MG',
-            peso: '65 kg',
-            altura: '1,58 m', 
-            tipoSanguineo: 'B-',  
-            },
-            {
-            codigo: '3',
-            nome: 'Maria',
-            sexo: 'Feminino',
-            email: 'maria@teste.com',
-            telefone: '34 99999-8007',
-            cep: '38444-254',
-            logradouro: 'Rua Tupaciguara, 100',
-            cidade: 'Uberlândia',
-            estado: 'MG',
-            peso: '73 kg',
-            altura: '1,63 m', 
-            tipoSanguineo: 'AB-',
-            },
-            {
-            codigo: '4',
-            nome: 'Carlos',
-            sexo: 'Masculino',
-            email: 'carlos@teste.com',
-            telefone: '34 97999-9997',
-            cep: '38400-192',
-            logradouro: 'Av. Fundinho, 301',
-            cidade: 'Uberlândia',
-            estado: 'MG',
-            peso: '79 kg',
-            altura: '1,72 m', 
-            tipoSanguineo: 'O+',  
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', 'controlador.php?acao=listagem_pacientes');
+        xhr.responseType = 'json';
+
+        xhr.onload = function(){
+            if (xhr.status != 200 || xhr.response === null) {
+                console.log("A resposta não pode ser obtida ");
+                console.log(xhr.status);
+                return;
             }
-        ];
 
-        const tabela = document.querySelector('#tabela tbody');
+            const dados = xhr.response;
 
-        let text = '';
+            const tabela = document.querySelector('#tabela tbody');
+    
+            let text = '';
+            
+            for(i = 0; i < dados.length; i++){
+                text = '<td class="dt-center">'+dados[i].id_pessoa+'</td>'
+                text += '<td class="dt-center">'+dados[i].nome+'</td>'
+                text += '<td class="dt-center">'+dados[i].sexo+'</td>'
+                text += '<td class="dt-center">'+dados[i].email+'</td>'
+                text += '<td class="dt-center">'+dados[i].telefone+'</td>'
+                text += '<td class="dt-center">'+dados[i].CEP+'</td>'
+                text += '<td class="dt-center">'+dados[i].logradouro+'</td>'
+                text += '<td class="dt-center">'+dados[i].cidade+'</td>'
+                text += '<td class="dt-center">'+dados[i].estado+'</td>'
+                text += '<td class="dt-center">'+dados[i].peso+'</td>'
+                text += '<td class="dt-center">'+dados[i].altura+'</td>'
+                text += '<td class="dt-center">'+dados[i].tp_sangue+'</td>'
 
-        
-        for(i = 0; i < dados.length; i++){
-            text = '<td class="dt-center">'+dados[i]['codigo']+'</td>'
-            text += '<td class="dt-center">'+dados[i]['nome']+'</td>'
-            text += '<td class="dt-center">'+dados[i]['sexo']+'</td>'
-            text += '<td class="dt-center">'+dados[i]['email']+'</td>'
-            text += '<td class="dt-center">'+dados[i]['telefone']+'</td>'
-            text += '<td class="dt-center">'+dados[i]['cep']+'</td>'
-            text += '<td class="dt-center">'+dados[i]['logradouro']+'</td>'
-            text += '<td class="dt-center">'+dados[i]['cidade']+'</td>'
-            text += '<td class="dt-center">'+dados[i]['estado']+'</td>'
-            text += '<td class="dt-center">'+dados[i]['peso']+'</td>'
-            text += '<td class="dt-center">'+dados[i]['altura']+'</td>'
-            text += '<td class="dt-center">'+dados[i]['tipoSanguineo']+'</td>'
+                let el = document.createElement('tr');
 
-            let el = document.createElement('tr');
+                el.innerHTML = text;
 
-            el.innerHTML = text;
+                tabela.appendChild(el);
+            }
 
-            tabela.appendChild(el);
         }
+        xhr.send();
     </script>
 </body>
 </html>

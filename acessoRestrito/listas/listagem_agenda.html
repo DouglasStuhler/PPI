@@ -50,60 +50,8 @@
     </footer>
 
     <script>
-        // Alimenta Tabela
-        // const dados = [
-        //     {
-        //         codigo: '1',
-        //         nome: 'José',
-        //         data: '08/03/2024',
-        //         horario: '09:00',
-        //         telefone: '34 99999-9997',
-        //         email: 'jose@teste.com',
-        //         especialidade: 'Cardiologia',
-        //         medico: 'Dr. Dráuzio Varella',
-        //         convenio: 'Unimed',
-        //         sexo: 'Masculino',
-        //     },
-        //     {
-        //         codigo: '2',
-        //         nome: 'Luzia',
-        //         data: '11/03/2024',
-        //         horario: '13:00',
-        //         telefone: '34 99999-8997',
-        //         email: 'luzia@teste.com',
-        //         especialidade: 'Mamografia',
-        //         medico: 'Dr. Oswaldo Cruz',
-        //         convenio: 'Particular',
-        //         sexo: 'Feminino',
-        //     },
-        //     {
-        //         codigo: '3',
-        //         nome: 'Maria',
-        //         data: '08/03/2024',
-        //         horario: '15:00',
-        //         telefone: '34 99999-8007',
-        //         email: 'maria@teste.com',
-        //         especialidade: 'Oftalmologia',
-        //         medico: 'Dra. Adriana Melo ',
-        //         convenio: 'SulAmérica',
-        //         sexo: 'Feminino',
-        //     },
-        //     {
-        //         codigo: '4',
-        //         nome: 'Carlos',
-        //         data: '08/03/2024',
-        //         horario: '16:00',
-        //         telefone: '34 97999-9997',
-        //         email: 'carlos@teste.com',
-        //         especialidade: 'Cardiologia',
-        //         medico: 'Dr. Dráuzio Varella',
-        //         convenio: 'Unimed',
-        //         sexo: 'Masculino',
-        //     }
-        // ];
-
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', 'controlador.php?acao=\'listagem_agenda\'');
+        xhr.open('GET', 'controlador.php?acao=listagem_agenda');
         xhr.responseType = 'json';
 
         xhr.onload = function (){
@@ -113,13 +61,7 @@
                 return;
             }
 
-            try {
-                const dados = JSON.parse(xhr.responseText);
-            } catch (e) {
-                console.error("String JSON inválida: " + xhr.responseText);
-                return;
-            }
-            
+            const dados = xhr.response;            
     
             const tabela = document.querySelector('#tabela tbody');
     
@@ -143,6 +85,7 @@
                 tabela.appendChild(el);
             }
         }
+        xhr.send();
 
     </script>
 </body>

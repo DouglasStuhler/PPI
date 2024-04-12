@@ -30,7 +30,6 @@
             <table id="tabela" class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th class="dt-center">#</th>
                         <th class="dt-center">CEP</th>
                         <th class="dt-center">Logradouro</th>
                         <th class="dt-center">Cidade</th>
@@ -47,55 +46,38 @@
     </footer>
 
     <script>
-        // Alimenta Tabela
-        const dados = [
-            {
-            codigo: '1',
-            cep: '38400-655',
-            logradouro: 'Av. Rondom Pacheco, 100',
-            cidade: 'Uberlândia',
-            estado: 'MG',
-            },
-            {
-            codigo: '2',
-            cep: '38400-200',
-            logradouro: 'Rua Tiradentes, 774',
-            cidade: 'Uberlândia',
-            estado: 'MG',
-            },
-            {
-            codigo: '3',
-            cep: '38444-254',
-            logradouro: 'Rua Tupaciguara, 100',
-            cidade: 'Uberlândia',
-            estado: 'MG',
-            },
-            {
-            codigo: '4',
-            cep: '38400-192',
-            logradouro: 'Av. Fundinho, 301',
-            cidade: 'Uberlândia',
-            estado: 'MG',
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', 'controlador.php?acao=listagem_enderecos');
+        xhr.responseType = 'json';
+
+        xhr.onload = function(){
+            if (xhr.status != 200 || xhr.response === null) {
+                console.log("A resposta não pode ser obtida ");
+                console.log(xhr.status);
+                return;
             }
-        ];
 
-        const tabela = document.querySelector('#tabela tbody');
+            const dados = xhr.response;
 
-        let text = '';
+            const tabela = document.querySelector('#tabela tbody');
+    
+            let text = '';
+            
+            for(i = 0; i < dados.length; i++){
+                text += '<td class="dt-center">'+dados[i].CEP+'</td>'
+                text += '<td class="dt-center">'+dados[i].logradouro+'</td>'
+                text += '<td class="dt-center">'+dados[i].cidade+'</td>'
+                text += '<td class="dt-center">'+dados[i].estado+'</td>'
 
-        for(i = 0; i < dados.length; i++){
-            text = '<td class="dt-center">'+dados[i]['codigo']+'</td>'
-            text += '<td class="dt-center">'+dados[i]['cep']+'</td>'
-            text += '<td class="dt-center">'+dados[i]['logradouro']+'</td>'
-            text += '<td class="dt-center">'+dados[i]['cidade']+'</td>'
-            text += '<td class="dt-center">'+dados[i]['estado']+'</td>'
+                let el = document.createElement('tr');
 
-            let el = document.createElement('tr');
+                el.innerHTML = text;
 
-            el.innerHTML = text;
+                tabela.appendChild(el);
+            }
 
-            tabela.appendChild(el);
         }
+        xhr.send();
     </script>
 </body>
 </html>

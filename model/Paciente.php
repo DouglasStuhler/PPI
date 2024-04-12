@@ -32,11 +32,11 @@
             $this->estado = $estado;
         }
 
-        function getPacientes($pdo){
+        static function getPacientes($pdo){
             try{
                 $sql = <<<SQL
                     SELECT Pessoa.nome, Pessoa.sexo, Pessoa.email, Pessoa.telefone, Pessoa.CEP, Pessoa.logradouro, Pessoa.cidade, Pessoa.estado, Paciente.peso, Paciente.altura, Paciente.tp_sangue, Paciente.id_pessoa
-                    FROM Pacientes
+                    FROM Paciente
                     JOIN Pessoa ON Pessoa.id_pessoa = Paciente.id_pessoa
                     ORDER BY Pessoa.nome
                 SQL;
@@ -46,19 +46,19 @@
                 $arrayPacientes = [];
 
                 while($row = $resp->fetch()){
-                    $nome = htmlspecialchars($row['Pessoa']['nome']);
-                    $sexo = htmlspecialchars($row['Pessoa']['sexo']);
-                    $email = htmlspecialchars($row['Pessoa']['email']);
-                    $telefone = htmlspecialchars($row['Pessoa']['telefone']);
-                    $CEP = htmlspecialchars($row['Pessoa']['CEP']);
-                    $logradouro = htmlspecialchars($row['Pessoa']['logradouro']);
-                    $cidade = htmlspecialchars($row['Pessoa']['cidade']);
-                    $estado = htmlspecialchars($row['Pessoa']['estado']);
+                    $nome = htmlspecialchars($row['nome']);
+                    $sexo = htmlspecialchars($row['sexo']);
+                    $email = htmlspecialchars($row['email']);
+                    $telefone = htmlspecialchars($row['telefone']);
+                    $CEP = htmlspecialchars($row['CEP']);
+                    $logradouro = htmlspecialchars($row['logradouro']);
+                    $cidade = htmlspecialchars($row['cidade']);
+                    $estado = htmlspecialchars($row['estado']);
                     
-                    $peso = $row['Paciente']['peso'];
-                    $altura = $row['Paciente']['altura'];
-                    $tp_sangue = htmlspecialchars($row['Paciente']['tp_sangue']);
-                    $id_pessoa = $row['Paciente']['id_pessoa'];
+                    $peso = $row['peso'];
+                    $altura = $row['altura'];
+                    $tp_sangue = htmlspecialchars($row['tp_sangue']);
+                    $id_pessoa = $row['id_pessoa'];
 
                     $paciente = new Paciente(
                         $peso,

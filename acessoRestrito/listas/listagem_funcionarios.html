@@ -49,40 +49,6 @@
     </footer>
 
     <script>
-        // Alimenta Tabela
-        // const dados = [
-        //     {
-        //         codigo: '1',
-        //         nome: 'Teste',
-        //         sexo: 'Masculino',
-        //         email: 'teste@teste.com',
-        //         telefone: '34 99999-9999',
-        //         cep: '34999-999',
-        //         logradouro: 'Avenida dos testes, 123',
-        //         cidade: 'Uberlândia',
-        //         estado: 'Minas Gerais',
-        //         data_contrato: '01/01/1999',
-        //         salario: '1234,56',
-        //         crm: null,
-        //         especialidade: null
-        //     },
-        //     {
-        //         codigo: '2',
-        //         nome: 'Teste 2',
-        //         sexo: 'Feminino',
-        //         email: 'teste2@teste.com',
-        //         telefone: '34 88888-8888',
-        //         cep: '34888-888',
-        //         logradouro: 'Rua dos testes, 321',
-        //         cidade: 'Uberlândia',
-        //         estado: 'Minas Gerais',
-        //         data_contrato: '01/01/2000',
-        //         salario: '1234,56',
-        //         crm: 'MG 012345',
-        //         especialidade: 'Clínico Geral'
-        //     }
-        // ];
-
         let xhr = new XMLHttpRequest();
         xhr.open('GET', 'controlador.php?acao=listagem_funcionarios');
         xhr.responseType = 'json';
@@ -94,25 +60,20 @@
                 return;
             }
 
-            try {
-                const dados = JSON.parse(xhr.responseText);
-            } catch (e) {
-                console.error("String JSON inválida: " + xhr.responseText);
-                return;
-            }
+            const dados = xhr.response;
 
             const tabela = document.querySelector('#tabela tbody');
     
             let text = '';
             
             for(i = 0; i < dados.length; i++){
-                text = '<td class="dt-center">'+dados[i].id_funcaionario+'</td>'
+                text = '<td class="dt-center">'+dados[i].id_funcionario+'</td>'
                 text += '<td class="dt-center">'+dados[i].nome+'</td>'
                 text += '<td class="dt-center">'+dados[i].sexo+'</td>'
                 text += '<td class="dt-center"><p>Email: '+dados[i].email+'</p><p>Telefone: '+dados[i].telefone+'</p></td>';
                 text += '<td class="dt-center"><p>Endereço: '+dados[i].logradouro+'</p><p>Cidade: '+dados[i].cidade+'</p><p>Estado: '+dados[i].estado+'</p></td>';
                 text += '<td class="dt-center"><p>Data de Contratação: '+dados[i].dt_contrato+'</p><p>Salário: '+dados[i].salario+'</p></td>';
-                if(dados[i].crm != null && dados[i].crm != undefined){
+                if((dados[i].crm != null && dados[i].crm != '') && (dados[i].crm != undefined && dados[i].crm != '')){
                     text += '<td class="dt-center"><p>CRM: '+dados[i].crm+'</p><p>Especialidade: '+dados[i].especialidade+'</p></td>';
                 } else {
                     text += '<td class="dt-center"> - </td>';

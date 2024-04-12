@@ -12,7 +12,7 @@
             $this->estado = $estado;
         }
 
-        function getCEPs($pdo){
+        static function getCEPs($pdo){
             try{
                 $sql = <<<SQL
                     SELECT CEP, logradouro, cidade, estado
@@ -25,10 +25,10 @@
                 $arrayCEPs = [];
 
                 while($row = $resp->fetch()){
-                    $CEP = htmlspecialchars("$row[CEP]");
-                    $logradouro = htmlspecialchars("$row[logradouro]");
-                    $cidade = htmlspecialchars("$row[cidade]");
-                    $estado = htmlspecialchars("$row[estado]");
+                    $CEP = htmlspecialchars($row['CEP']);
+                    $logradouro = htmlspecialchars($row['logradouro']);
+                    $cidade = htmlspecialchars($row['cidade']);
+                    $estado = htmlspecialchars($row['estado']);
 
                     $endereco = new Endereco(
                         $CEP,
