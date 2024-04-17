@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/login.css">
 </head>
+
 <body>
     <header>
         <img src="images/logomarca.png" alt="Logomarca da Vitalize">
@@ -23,11 +25,11 @@
         </ul>
     </nav>
     <main>
-        <form id="formulario" action="#" method="POST">
+        <form id="formulario" action="model/login.php" method="post">
             <h1>Login</h1>
             <div class="form-group">
                 <label for="user">Usuário</label>
-                <input type="text" id="user" name="user" required>
+                <input type="email" id="user" name="user" required>
             </div>
             <div class="form-group">
                 <label for="senha">Senha</label>
@@ -36,20 +38,16 @@
             <div class="form-group divEnviar">
                 <button class="enviar">Entrar</button>
             </div>
+            <div>
+                <p class="form-group loginFailMsg" id="loginFailMsg">Usuário e/ou senha incorreta. Por favor, tente
+                    novamente.</p>
+            </div>
         </form>
     </main>
     <footer>
         <p>&copy; Todos os direitos são reservados à Vitalize.</p>
     </footer>
-    <script>
-        const form = document.querySelector('#formulario');
-
-        form.onsubmit = (e) => {
-            e.preventDefault();
-
-            window.location.assign('acessoRestrito');
-        }
-    </script>
+    <script src="js/login.js"></script>
 </body>
 
 </html>

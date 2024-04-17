@@ -41,7 +41,13 @@ main > form .form-group{
 main .divEnviar{
     display: flex;
     justify-content: center;
-}
+}   
+
+main .loginFailMsg {
+    display: none;
+    color: red;
+    text-align: center;
+  }
 
 main .enviar{
     padding: 7px 20px;
