@@ -79,6 +79,74 @@
             }
         }
 
+        static function getAgendamentosMedicoData($pdo, $medico, $d){
+            try{
+                $sql = <<<SQL
+                    SELECT 
+                        Agenda.hr_agenda
+                    FROM Agenda
+                    JOIN Medico ON Medico.id_medico = Agenda.id_medico
+                    JOIN Funcionario ON Funcionario.id_funcionario = Medico.id_funcionario
+                    JOIN Pessoa PessoaMedico ON PessoaMedico.id_pessoa = Funcionario.id_pessoa
+                    WHERE Agenda.dt_agenda = ?
+                        AND Agenda.id_medico = ?
+                    ORDER BY Agenda.dt_agenda, Agenda.hr_agenda
+                SQL;
+
+                $d = new DateTime($d);
+                $d = $d->format('Y-m-d');
+
+                $resp = $pdo->prepare($sql);
+                $resp->execute([$d, $medico]);
+
+                $arrayAgendamento = [];
+                while($row = $resp->fetch()){
+
+                    $hr_agenda = substr($row['hr_agenda'], 0, 5);
+
+                    $arrayAgendamento[] = $hr_agenda;
+                }
+                return $arrayAgendamento;
+            } catch (Exception $e){
+                exit('Falha inesperada: '. $e->getMessage());
+            }
+        }
+
+        static function addAgenda($pdo, $dadosPost){
+            try{
+                $sql = <<<SQL
+                    INSERT INTO Agenda (dt_agenda, hr_agenda, nome, sexo, email, id_medico)
+                    VALUES (?, ?, ?, ?, ?, ?)
+                SQL;
+    
+                
+                $paciente = htmlspecialchars($dadosPost['nome']);
+                $sexo = $dadosPost['sexo'];
+                $email = htmlspecialchars($dadosPost['email']);
+                $medico = $dadosPost['medico'];
+    
+                $data = new DateTime($dadosPost['data']);
+                $data = $data->format('Y-m-d');
+    
+                $horario = new DateTime($dadosPost['horario']);
+                $horario = $horario->format('H:i:s');
+    
+                $ins = $pdo->prepare($sql);
+                $ins->execute([
+                    $data,
+                    $horario,
+                    $paciente,
+                    $sexo,
+                    $email,
+                    $medico
+                ]);
+
+                return true;
+            } catch (Exception $e){
+                return false;
+            }
+        }
+
         function getAgendamentosMedico($pdo, $medico){
             try{
                 $sql = <<<SQL

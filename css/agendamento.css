@@ -64,6 +64,11 @@ select {
     justify-content: space-around;
 }
 
+#agendamento .row.unico{
+    justify-content: left;
+    padding-left: 10px;
+}
+
 #agendamento fieldset {
     padding: 15px ;
     margin-bottom: 20px;
