@@ -15,14 +15,14 @@
   <nav>
     <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="galery.html">Galeria</a></li>
-        <li><a href="address.html">Novo Endereço</a></li>
+        <li><a href="galeria.html">Galeria</a></li>
+        <li><a href="endereco.html">Novo Endereço</a></li>
         <li><a href="agendamento.html">Agendamento</a></li>
         <li><a href="login.html">Login</a></li>
     </ul>
   </nav>
   <main>
-    <form action="cadEndereco.php" method="post">
+    <form action="Endereco.php" method="post">
       <h2>Novo Endereço</h2>
 
       <div class="form-group small">
@@ -86,7 +86,7 @@
       if (cep.length != 9) return;
 
       try {
-        let response = await fetch("CadEndereco.php?cep=" + cep);
+        let response = await fetch("Endereco.php?cep=" + cep);
         if (!response.ok) throw new Error(response.statusText);
         var endereco = await response.json();
       }
