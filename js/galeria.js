@@ -4,6 +4,7 @@ window.onload = () => {
   for (let modal of modals) {
     let span = modal.parentNode.querySelector("span");
     span.onclick = () => modal.classList.add("mostraModal");
-    modal.onmouseout = () => modal.classList.remove("mostraModal");
+    span.ondblclick = () => modal.classList.remove("mostraModal");
+    modal.onclick = () => modal.classList.remove("mostraModal");
   }
 };

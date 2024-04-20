@@ -230,3 +230,9 @@ footer p{
         padding: 0 2vw;
     }
 }
+
+@media (max-width: 480px){
+    nav ul li a{
+        font-size: 15px;
+    }
+}
