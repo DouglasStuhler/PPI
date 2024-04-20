@@ -6,7 +6,7 @@ main {
 
 #agendamento {
     box-sizing: border-box;
-    width: 60%;
+    width: 70%;
     margin: 0 auto;
 }
 
@@ -105,28 +105,25 @@ select {
 
 @media (max-width: 720px) {
 
-  form {
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  input {
-    font-size: 0.7rem;
-  }
-
-  select {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 480px) {
     #agendamento {
         width: 90%;
     }
-
+    
     #agendamento legend {
         padding-left: 4%;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    input {
+        font-size: 0.7rem;
+    }
+
+    select {
+        font-size: 0.9rem;
     }
 
     #agendamento .row {
@@ -151,4 +148,12 @@ select {
     #agendamento .button {
         width: 50%;
     }
+}
+
+@media (max-width: 480px) {
+    
+
+    
+
+    
 }
