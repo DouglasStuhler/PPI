@@ -14,7 +14,6 @@ body, html{
 
 header{
     height: 13vh;
-    /* border-bottom: 1px solid #1949ae; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,15 +50,15 @@ nav ul li{
 }
 
 nav ul li a{
-    color: white;
-    /* color: #fdbd18; */
+    color: #fff;
     text-decoration: none;
     font-weight: bold;
     letter-spacing: .01em;
 }
 
 main{
-    min-height: 60vh;
+    width: 90%;
+    margin: 2% auto;
 }
 
 main > h1{
@@ -70,12 +69,15 @@ main > h1{
 div#buttons{
     padding: 10px 15px;
     width: 90%;
-    margin: 20px auto;
+    margin: 30px auto; 
 }
 
 div#buttons .btn{
-    border: 1px solid black;
+    border: 1px solid #000;
     width: 100%;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
 }
 
 div#buttons div.row{
@@ -91,7 +93,7 @@ div#buttons div.row > .divDesc{
 
 footer{
     padding: 2vh 0;
-    background-color: #222;
+    background-color: #000;
 }
 
 footer p{
@@ -101,8 +103,9 @@ footer p{
 
 /* Responsividade Breakpoints */
 
-@media (min-width: 992px){
-    div#buttons div.row > .divDesc p{
-        text-align: left;
+@media (max-width: 720px){
+    .divBtn a{
+        display: flex;
+        justify-content: center;
     }
 }

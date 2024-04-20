@@ -17,17 +17,18 @@
     margin-bottom: 10px;
 }
 
-.center-direita{
+.center{
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 #formCad .medico{
     display: none;
 }
 
-@media (min-width: 998px){
-    .center-direita{
-        justify-content: right;
+@media (max-width: 720px){
+    .row {
+        flex-direction: column;
     }
 }

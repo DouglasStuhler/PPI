@@ -1,9 +1,17 @@
 main {
     background-color: #6481f2;
     padding: 10px;
-  }
+    font-family: Verdana, Arial, sans-serif;
+}
+
 #agendamento {
     box-sizing: border-box;
+    width: 70%;
+    margin: 0 auto;
+}
+
+#agendamento .txt {
+    margin: 0 auto;
 }
 
 #agendamento .txt h2 {
@@ -14,14 +22,17 @@ main {
 
 #agendamento legend {
     color: #325bc5;
-    margin-top: 20px;
-    font-size: 1.54em;
+    font-size: 1.50em;
     text-align: left;
+    padding-left: 2%;
 }
 
 #agendamento form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     background-color: #fff;
-    width: 90%;
+    box-sizing: border-box;
     margin: 0px auto;
     border-radius: 10px;
 }
@@ -31,37 +42,35 @@ main {
     line-height: 1.5;
     font-size: inherit;
     color: #495057;
-    margin-left: 5px;
+    margin-left: 2%;
+    margin-top: 2%;
 }
 
 #agendamento input,
 select {
     display: block;
+    font-size: 0.9rem;
     width: 100%;
     padding: .3rem .75rem;
-    font-size: 1rem;
-    color: #495057;
+    border: 1px solid #ccc;
+    border-radius: .25rem;
+    color: #777;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
 }
+
 #agendamento .small {
     flex-basis: 23%;
   }
 
 #agendamento .medium {
     flex-basis: 47%;
-  }  
-  
-#agendamento .larger {
-    flex-basis: 74%;
-  }
+}  
 
 #agendamento .row {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 #agendamento .row.unico{
@@ -70,8 +79,8 @@ select {
 }
 
 #agendamento fieldset {
-    padding: 15px ;
-    margin-bottom: 20px;
+    padding: 10px ;
+    margin-bottom: 15px;
     border: none;
 }
 
@@ -81,7 +90,7 @@ select {
     padding: 10px;
     margin: 1rem auto;
     background-color: #198754;
-    width: 40%;
+    width: 30%;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -92,4 +101,59 @@ select {
 #agendamento .button:hover {
     background-color: #146c43;
     color: #fff;
+}
+
+@media (max-width: 720px) {
+
+    #agendamento {
+        width: 90%;
+    }
+    
+    #agendamento legend {
+        padding-left: 4%;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    input {
+        font-size: 0.7rem;
+    }
+
+    select {
+        font-size: 0.9rem;
+    }
+
+    #agendamento .row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #agendamento label {
+        margin: 5px;
+    }
+
+    #agendamento .small,
+    #agendamento .medium {
+        flex-basis: 100%;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        margin: 0 auto;
+    }
+
+    #agendamento .button {
+        width: 50%;
+    }
+}
+
+@media (max-width: 480px) {
+    
+
+    
+
+    
 }

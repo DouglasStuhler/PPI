@@ -6,7 +6,7 @@
   <title>Vitalize - Novo Endereço</title>
   <!-- Links CSS -->
   <link rel="stylesheet" href="css/index.css">
-  <link rel="stylesheet" href="css/address.css">
+  <link rel="stylesheet" href="css/endereco.css">
 </head>
 <body>
   <header>
@@ -15,29 +15,29 @@
   <nav>
     <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="galery.html">Galeria</a></li>
-        <li><a href="address.html">Novo Endereço</a></li>
+        <li><a href="galeria.html">Galeria</a></li>
+        <li><a href="endereco.html">Novo Endereço</a></li>
         <li><a href="agendamento.html">Agendamento</a></li>
         <li><a href="login.html">Login</a></li>
     </ul>
   </nav>
   <main>
-    <form action="cadEndereco.php?acao=adicionarEndereco" method="post">
+    <form action="model/Endereco.php" method="post">
       <h2>Novo Endereço</h2>
 
       <div class="form-group small">
-        <label for="campoCEP" class="labels">CEP: </label>
-        <input type="text" name="campoCEP" id="campoCEP" class="inputs" pattern="\d{5}\-\d{3}" required>
+        <label for="cep" class="labels">CEP: </label>
+        <input type="text" name="cep" id="cep" class="inputs" pattern="\d{5}\-\d{3}" required>
       </div>
 
       <div class="form-group larger">
-        <label for="campoLogradouro" class="labels">Logradouro: </label>
-        <input type="text" name="campoLogradouro" id="campoLogradouro" class="inputs" required>
+        <label for="logradouro" class="labels">Logradouro: </label>
+        <input type="text" name="logradouro" id="logradouro" class="inputs" required>
       </div>
 
       <div class="form-group small">
-        <label for="campoEstado">Estado:</label>
-        <select id="campoEstado" name="campoEstado" class="inputs" required>
+        <label for="estado">Estado:</label>
+        <select id="estado" name="estado" class="inputs" required>
           <option value="" disabled selected>Selecione</option>
           <option value="AC">AC</option>
           <option value="AL">AL</option>
@@ -69,8 +69,8 @@
         </select>
       </div> 
       <div class="form-group larger">
-        <label for="campoCidade" class="labels">Cidade: </label>
-        <input type="text" name="campoCidade" id="campoCidade" class="inputs" required>
+        <label for="cidade" class="labels">Cidade: </label>
+        <input type="text" name="cidade" id="cidade" class="inputs" required>
       </div>   
       <button>Cadastrar</button>
     </form>
@@ -79,7 +79,6 @@
     <p>&copy; Todos os direitos são reservados à Vitalize.</p>
   </footer>
   
-  <script src="js/address.js"></script>
-
+  <script src="js/busca_endereco.js"></script>
 </body>
 </html>

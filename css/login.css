@@ -1,6 +1,7 @@
 main{
     background-color: #6481f2;
     padding: 10px;
+    font-family: Verdana, Arial, sans-serif;
 }
 
 main > form h1{
@@ -9,7 +10,7 @@ main > form h1{
 }
 
 main > form{
-    width: 90%;
+    width: 60%;
     margin: 10vh auto;
     border-radius: 10px;
     background-color: white;
@@ -18,7 +19,7 @@ main > form{
 
 main > form label{
     display: block;
-    width: 90%;
+    width: 70%;
     text-align: left;
     font-size: 1.1em;
     margin: 0 5%;
