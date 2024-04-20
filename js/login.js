@@ -6,9 +6,10 @@ async function sendForm(form) {
         const result = JSON.parse(bodyText);
 
         if (result.success)
-            window.location = result.detail;
+            window.location.assign('acessoRestrito');
         else {
             document.querySelector("#loginFailMsg").style.display = 'block';
+            window.alert("Usuário e/ou senha incorreta. Por favor, tente novamente.");
             form.senha.value = "";
             form.senha.focus();
         }

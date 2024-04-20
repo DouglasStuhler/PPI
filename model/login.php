@@ -15,7 +15,7 @@ class RequestResponse
 }
 
 function checkLogin($pdo, $email, $senha)
-{ 
+{
   $sql = <<<SQL
     SELECT senhaHash
     FROM Pessoa
@@ -24,23 +24,22 @@ function checkLogin($pdo, $email, $senha)
     WHERE email = ?
     SQL;
 
-    try {
-      $stmt = $pdo->prepare($sql);
-      $stmt->execute([$email]);
-      $senhaHash = $stmt->fetchColumn();
-  
-      if (!$senhaHash) 
-        return false; // a consulta não retornou nenhum resultado (email não encontrado)
-  
-      if (!password_verify($senha, $senhaHash))
-        return false; // senha incorreta
-        
-      // email e senha corretos
-      return true;
-    } 
-    catch (Exception $e) {
-      exit('Falha inesperada: ' . $e->getMessage());
-    }
+  try {
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$email]);
+    $senhaHash = $stmt->fetchColumn();
+
+    if (!$senhaHash)
+      return false; // a consulta não retornou nenhum resultado (email não encontrado)
+
+    if (!(md5($senha) == $senhaHash))
+      return false; // senha incorreta
+
+    // email e senha corretos
+    return true;
+  } catch (Exception $e) {
+    exit('Falha inesperada: ' . $e->getMessage());
+  }
 }
 
 $user = $_POST["user"] ?? "";
