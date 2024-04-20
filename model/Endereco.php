@@ -51,13 +51,14 @@ class Endereco
     {
         try {
             $sql = <<<SQL
-                    INSERT INTO cliente (CEP, logradouro, cidade, estado)
+                    INSERT INTO Enderecos (CEP, logradouro, cidade, estado)
                     VALUES (?, ?, ?, ?)
                     SQL;
 
             $stmt = $pdo->prepare($sql);
             $stmt->execute([ $this->CEP, $this->logradouro, $this->cidade, $this->estado ]);
 
+            return true;
         } catch (Exception $e) {
             exit('Falha inesperada: ' . $e->getMessage());
         }
