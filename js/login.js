@@ -23,5 +23,4 @@ const form = document.querySelector("#formulario");
 form.onsubmit = function (e) {
     sendForm(form);
     e.preventDefault();
-
 }

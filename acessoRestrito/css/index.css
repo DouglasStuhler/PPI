@@ -66,19 +66,12 @@ main > h1{
     text-align: center;
 }
 
-
 footer{
     padding: 2vh 0;
-    background-color: #222;
+    background-color: #000;
 }
 
 footer p{
     text-align: center;
     color: white;
-}
-
-/* Responsividade Breakpoints */
-
-@media (min-width: 992px){
-    
 }
