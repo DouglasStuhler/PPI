@@ -123,39 +123,37 @@
     <footer>
         <p>&copy; Todos os direitos são reservados à Vitalize.</p>
     </footer>
-
+    <script src="../../js/busca_endereco.js"></script>
     <script>
-    // Interação Médico
-    const vinc = document.querySelector('#vinculo');
+        // Interação Médico
+        const vinc = document.querySelector('#vinculo');
 
-    vinc.onchange = (e) => {
+        vinc.onchange = (e) => {
 
-        let els = document.querySelectorAll('.medico');
+            let els = document.querySelectorAll('.medico');
 
-        if(vinc.value == 'M'){    
-            for(i = 0; i < els.length; i++){
-                els[i].style.display = 'block';
-                els[i].querySelector('.form-control').setAttribute('required', true);
-            }
-        } else {
-            for(i = 0; i < els.length; i++){
-                els[i].style.display = 'none';
-                els[i].querySelector('.form-control').setAttribute('required', false);
+            if(vinc.value == 'M'){    
+                for(i = 0; i < els.length; i++){
+                    els[i].style.display = 'block';
+                    els[i].querySelector('.form-control').setAttribute('required', true);
+                }
+            } else {
+                for(i = 0; i < els.length; i++){
+                    els[i].style.display = 'none';
+                    els[i].querySelector('.form-control').setAttribute('required', false);
+                }
             }
         }
-    }
 
-    // Envio Formulário
-    const form = document.querySelector('#formCad');
+        // Envio Formulário
+        const form = document.querySelector('#formCad');
 
-    form.onsubmit = (e) => {
-        e.preventDefault();
+        form.onsubmit = (e) => {
+            e.preventDefault();
 
-        alert('Funcionário cadastrado com sucesso!');
-        window.location.assign('../');
-    }
-</script>
+            alert('Funcionário cadastrado com sucesso!');
+            window.location.assign('../');
+        }
+    </script>
 </body>
-
-
 </html>

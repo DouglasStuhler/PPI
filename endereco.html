@@ -22,22 +22,22 @@
     </ul>
   </nav>
   <main>
-    <form action="Endereco.php" method="post">
+    <form action="model/Endereco.php" method="post">
       <h2>Novo Endereço</h2>
 
       <div class="form-group small">
-        <label for="campoCEP" class="labels">CEP: </label>
-        <input type="text" name="campoCEP" id="campoCEP" class="inputs" pattern="\d{5}\-\d{3}" required>
+        <label for="cep" class="labels">CEP: </label>
+        <input type="text" name="cep" id="cep" class="inputs" pattern="\d{5}\-\d{3}" required>
       </div>
 
       <div class="form-group larger">
-        <label for="campoLogradouro" class="labels">Logradouro: </label>
-        <input type="text" name="campoLogradouro" id="campoLogradouro" class="inputs" required>
+        <label for="logradouro" class="labels">Logradouro: </label>
+        <input type="text" name="logradouro" id="logradouro" class="inputs" required>
       </div>
 
       <div class="form-group small">
-        <label for="campoEstado">Estado:</label>
-        <select id="campoEstado" name="campoEstado" class="inputs" required>
+        <label for="estado">Estado:</label>
+        <select id="estado" name="estado" class="inputs" required>
           <option value="" disabled selected>Selecione</option>
           <option value="AC">AC</option>
           <option value="AL">AL</option>
@@ -69,8 +69,8 @@
         </select>
       </div> 
       <div class="form-group larger">
-        <label for="campoCidade" class="labels">Cidade: </label>
-        <input type="text" name="campoCidade" id="campoCidade" class="inputs" required>
+        <label for="cidade" class="labels">Cidade: </label>
+        <input type="text" name="cidade" id="cidade" class="inputs" required>
       </div>   
       <button>Cadastrar</button>
     </form>
@@ -79,34 +79,6 @@
     <p>&copy; Todos os direitos são reservados à Vitalize.</p>
   </footer>
   
-  <script>
-
-    async function buscaEndereco(cep) {
-
-      if (cep.length != 9) return;
-
-      try {
-        let response = await fetch("Endereco.php?cep=" + cep);
-        if (!response.ok) throw new Error(response.statusText);
-        var endereco = await response.json();
-      }
-      catch (error) {
-        console.error(error);
-        return;
-      }
-
-      let form = document.querySelector("form");
-      form.rua.value = endereco.rua;
-      form.bairro.value = endereco.bairro;
-      form.cidade.value = endereco.cidade;
-    }
-
-    window.onload = function () {
-      const inputCep = document.querySelector("#campoCEP");
-      inputCep.onkeyup = () => buscaEndereco(inputCep.value);
-    }
-
-  </script>
-
+  <script src="js/busca_endereco.js"></script>
 </body>
 </html>
