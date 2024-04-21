@@ -23,7 +23,7 @@ class Endereco
                 LIMIT 1
                 SQL;
 
-            $resp = $stmt->prepare($sql);
+            $stmt = $pdo->prepare($sql);
             $stmt->bindParam(':cep', $CEP);
             $stmt->execute();
 
