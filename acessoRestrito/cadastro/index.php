@@ -1,3 +1,14 @@
+<?php
+
+session_start();
+
+$email = $_SESSION['user'] ?? "";
+
+if(trim($email) == "")
+    header("location: ../../login.html");
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
