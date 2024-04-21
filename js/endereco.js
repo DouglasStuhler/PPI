@@ -1,13 +1,13 @@
 
 
-function insertEndereco() {
-    let cep = document.getElementById('campoCEP').value;
-    let logr = document.getElementById('campoLogradouro').value;
-    let estado = document.getElementById('campoEstado').value;
-    let cidade = document.getElementById('campoCidade').value;
+function insertEndereco(form) {
+    /*let cep = form.cep.value;
+    let logr = form.logr.value;
+    let estado = form.estado.value;
+    let cidade = form.cidade.value;*/
 
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', 'enderecoController.php?acao=cadEndereco&CEP=' + cep + '&logr=' + logr + '&estado=' + estado + '&cidade=' + cidade);
+    xhr.open('POST', '../enderecoController.php');
     xhr.responseType = 'json';
 
     xhr.onload = function () {
@@ -34,8 +34,8 @@ function insertEndereco() {
 
 }
 
-var form = document.getElementById('formCad');
+var form = document.querySelector("#formCad");
 form.onsubmit = function (e) {
-    insertEndereco();
+    insertEndereco(form);
     e.preventDefault();
 }
