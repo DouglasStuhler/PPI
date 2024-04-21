@@ -19,7 +19,7 @@
         <ul>
             <li><a href="../../">Home</a></li>
             <li class="flexPeso"><a href="../">Início Adminsitrativo</a></li>
-            <li><a href="#">Cadastro</a></li>
+            <li><a href="index.html">Cadastro</a></li>
             <li><a href="../listas">Listagem</a></li>
         </ul>
     </nav>
@@ -28,7 +28,7 @@
         <div id="buttons">
             <div class="row">
                 <div class="col-12 col-md-3 divBtn">
-                    <a class="btn" href="cadastro_funcionario.html">Cadastro de Funcionários</a>
+                    <a class="btn" href="cadastro_funcionario.php">Cadastro de Funcionários</a>
                 </div>
                 <div class="col-12 col-md-9 divDesc">
                     <p>Clique no botão para efetuar o cadastramento de algum funcionário em nosso sistema.</p>
@@ -36,7 +36,7 @@
             </div>
             <div class="row">
                 <div class="col-12 col-md-3 divBtn">
-                    <a class="btn" href="cadastro_paciente.html">Cadastro de Pacientes</a>
+                    <a class="btn" href="cadastro_paciente.php">Cadastro de Pacientes</a>
                 </div>
                 <div class="col-12 col-md-9 divDesc">
                     <p>Clique no botão para efetuar o cadastramento de algum paciente em nosso sistema.</p>

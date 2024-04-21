@@ -1,5 +1,5 @@
 <?php
-require '../../../conexaoBanco.php';
+require '../../conexaoBanco.php';
 
 $pdo = mysqlConnect();
 

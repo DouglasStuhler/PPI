@@ -1,3 +1,14 @@
+<?php
+
+session_start();
+
+$email = $_SESSION['user'] ?? "";
+
+if(trim($email) == "")
+    header("location: ../../login.html");
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -26,7 +37,7 @@
     </nav>
     <main>
         <h1>Cadastro de Paciente</h1>
-        <form id="formCad" action="php/cadastro_paciente.php" method="POST">
+        <form id="formCad" action="controlador_pac.php" method="POST">
             <fieldset>
                 <legend>Dados Pessoais</legend>
                 <div class="row">
