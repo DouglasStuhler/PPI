@@ -50,15 +50,31 @@ class Endereco
     public function insertEndereco($pdo)
     {
         try {
+
+            $check_sql = <<<SQL
+                            SELECT COUNT(*) 
+                            FROM Enderecos 
+                            WHERE CEP = ?
+                            SQL;
+
+            $check_stmt = $pdo->prepare($check_sql);
+            $check_stmt->execute([$this->CEP]);
+            $count = $check_stmt->fetchColumn();
+
+            if ($count > 0) {
+                // Se o CEP já existir
+                return 1;
+            }
+
             $sql = <<<SQL
                     INSERT INTO Enderecos (CEP, logradouro, cidade, estado)
                     VALUES (?, ?, ?, ?)
                     SQL;
 
             $stmt = $pdo->prepare($sql);
-            $stmt->execute([ $this->CEP, $this->logradouro, $this->cidade, $this->estado ]);
+            $stmt->execute([$this->CEP, $this->logradouro, $this->cidade, $this->estado]);
 
-            return true;
+            return 0;
         } catch (Exception $e) {
             exit('Falha inesperada: ' . $e->getMessage());
         }

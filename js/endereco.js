@@ -17,16 +17,18 @@ function insertEndereco(form) {
             return false;
         }
 
-        alert('Cadastro de endereço efetuado com sucesso');
+        
         const result = xhr.response;
-        if (result.success)
+        if (result.success){
+            alert('Cadastro de endereço efetuado com sucesso');
             window.location.assign('acessoRestrito');
-        else {
+        } else {
             alert('Erro ao efetuar o cadastro de endereço');
             cep.value = "";
             logr.value = "";
             estado.value = "";
             cidade.value = "";
+            
         }
 
     }
