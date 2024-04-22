@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+
+$email = $_SESSION['user'] ?? "";
+
+if(trim($email) == "")
+    header("location: ../../login.html");
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -25,23 +35,19 @@
         </ul>
     </nav>
     <main>
-        <h1>Lista de Pacientes</h1>
+        <h1>Lista de Agendamentos</h1>
         <div class="table-responsive">
             <table id="tabela" class="table table-striped table-hover">
                 <thead>
                     <tr>
                         <th class="dt-center">#</th>
                         <th class="dt-center">Nome</th>
-                        <th class="dt-center">Sexo</th>
-                        <th class="dt-center">Email</th>
+                        <th class="dt-center">Data</th>
+                        <th class="dt-center">Horário</th>
                         <th class="dt-center">Contato</th>
-                        <th class="dt-center">CEP</th>
-                        <th class="dt-center">Logradouro</th>
-                        <th class="dt-center">Cidade</th>
-                        <th class="dt-center">Estado</th>
-                        <th class="dt-center">Peso</th>
-                        <th class="dt-center">Altura</th>
-                        <th class="dt-center">Tipo Sanguineo</th>
+                        <th class="dt-center">Especialidade</th>
+                        <th class="dt-center">Médico</th>
+                        <th class="dt-center">Sexo</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -52,47 +58,45 @@
     <footer>
         <p>&copy; Todos os direitos são reservados à Vitalize.</p>
     </footer>
+
     <script>
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', 'controlador.php?acao=listagem_pacientes');
+        xhr.open('GET', 'controlador.php?acao=listagem_agenda');
         xhr.responseType = 'json';
 
-        xhr.onload = function(){
+        xhr.onload = function (){
             if (xhr.status != 200 || xhr.response === null) {
                 console.log("A resposta não pode ser obtida ");
                 console.log(xhr.status);
                 return;
             }
 
-            const dados = xhr.response;
-
+            const dados = xhr.response;            
+    
             const tabela = document.querySelector('#tabela tbody');
     
             let text = '';
+    
             
             for(i = 0; i < dados.length; i++){
-                text = '<td class="dt-center">'+dados[i].id_pessoa+'</td>'
+                text = '<td class="dt-center">'+dados[i].id_agenda+'</td>'
                 text += '<td class="dt-center">'+dados[i].nome+'</td>'
+                text += '<td class="dt-center">'+dados[i].dt_agenda+'</td>'
+                text += '<td class="dt-center">'+dados[i].hr_agenda+'</td>'
+                text += '<td class="dt-center"><p>Email: '+dados[i].email+'</p></td>';
+                text += '<td class="dt-center">'+dados[i].especialidade+'</td>'
+                text += '<td class="dt-center">'+dados[i].nm_medico+'</td>'
                 text += '<td class="dt-center">'+dados[i].sexo+'</td>'
-                text += '<td class="dt-center">'+dados[i].email+'</td>'
-                text += '<td class="dt-center">'+dados[i].telefone+'</td>'
-                text += '<td class="dt-center">'+dados[i].CEP+'</td>'
-                text += '<td class="dt-center">'+dados[i].logradouro+'</td>'
-                text += '<td class="dt-center">'+dados[i].cidade+'</td>'
-                text += '<td class="dt-center">'+dados[i].estado+'</td>'
-                text += '<td class="dt-center">'+dados[i].peso+'</td>'
-                text += '<td class="dt-center">'+dados[i].altura+'</td>'
-                text += '<td class="dt-center">'+dados[i].tp_sangue+'</td>'
-
+    
                 let el = document.createElement('tr');
-
+    
                 el.innerHTML = text;
-
+    
                 tabela.appendChild(el);
             }
-
         }
         xhr.send();
+
     </script>
 </body>
 </html>

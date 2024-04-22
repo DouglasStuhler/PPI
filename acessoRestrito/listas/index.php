@@ -28,7 +28,7 @@
         <div id="buttons">
             <div class="row">
                 <div class="col-12 col-md-3 divBtn">
-                    <a class="btn" href="listagem_funcionarios.html">Lista de Funcionários</a>
+                    <a class="btn" href="listagem_funcionarios.php">Lista de Funcionários</a>
                 </div>
                 <div class="col-12 col-md-9 divDesc">
                     <p>Consulte a lista de funcionários cadastrados</p>
@@ -36,7 +36,7 @@
             </div>
             <div class="row">
                 <div class="col-12 col-md-3 divBtn">
-                    <a class="btn" href="listagem_pacientes.html">Lista de Pacientes</a>
+                    <a class="btn" href="listagem_pacientes.php">Lista de Pacientes</a>
                 </div>
                 <div class="col-12 col-md-9 divDesc">
                     <p>Consulte a lista de pacientes cadastrados</p>
@@ -44,7 +44,7 @@
             </div>
             <div class="row">
                 <div class="col-12 col-md-3 divBtn">
-                    <a class="btn" href="listagem_enderecos.html">Lista de Endereços</a>
+                    <a class="btn" href="listagem_enderecos.php">Lista de Endereços</a>
                 </div>
                 <div class="col-12 col-md-9 divDesc">
                     <p>Consulte a lista de endereços cadastrados</p>
@@ -52,7 +52,7 @@
             </div>
             <div class="row">
                 <div class="col-12 col-md-3 divBtn">
-                    <a class="btn" href="listagem_agenda.html">Lista de Consultas</a>
+                    <a class="btn" href="listagem_agenda.php">Lista de Consultas</a>
                 </div>
                 <div class="col-12 col-md-9 divDesc">
                     <p>Consulte a lista de agendamentos</p>
@@ -60,7 +60,7 @@
             </div>
             <div class="row">
                 <div class="col-12 col-md-3 divBtn">
-                    <a class="btn" href="listagem_agenda_pessoal.html">Minhas Consultas</a>
+                    <a class="btn" href="listagem_agenda_pessoal.php">Minhas Consultas</a>
                 </div>
                 <div class="col-12 col-md-9 divDesc">
                     <p>Consulte sua agenda de consultas</p>

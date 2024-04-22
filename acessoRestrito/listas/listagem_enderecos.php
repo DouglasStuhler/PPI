@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+
+$email = $_SESSION['user'] ?? "";
+
+if(trim($email) == "")
+    header("location: ../../login.html");
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -25,18 +35,15 @@
         </ul>
     </nav>
     <main>
-        <h1>Lista de Funcionários</h1>
+        <h1>Lista de Endereços</h1>
         <div class="table-responsive">
             <table id="tabela" class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th class="dt-center">#</th>
-                        <th class="dt-center">Nome</th>
-                        <th class="dt-center">Sexo</th>
-                        <th class="dt-center">Contato</th>
-                        <th class="dt-center">Endereço</th>
-                        <th class="dt-center">Info. Contrato</th>
-                        <th class="dt-center">Info. Médico</th>
+                        <th class="dt-center">CEP</th>
+                        <th class="dt-center">Logradouro</th>
+                        <th class="dt-center">Cidade</th>
+                        <th class="dt-center">Estado</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -50,7 +57,7 @@
 
     <script>
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', 'controlador.php?acao=listagem_funcionarios');
+        xhr.open('GET', 'controlador.php?acao=listagem_enderecos');
         xhr.responseType = 'json';
 
         xhr.onload = function(){
@@ -67,28 +74,20 @@
             let text = '';
             
             for(i = 0; i < dados.length; i++){
-                text = '<td class="dt-center">'+dados[i].id_funcionario+'</td>'
-                text += '<td class="dt-center">'+dados[i].nome+'</td>'
-                text += '<td class="dt-center">'+dados[i].sexo+'</td>'
-                text += '<td class="dt-center"><p>Email: '+dados[i].email+'</p><p>Telefone: '+dados[i].telefone+'</p></td>';
-                text += '<td class="dt-center"><p>Endereço: '+dados[i].logradouro+'</p><p>Cidade: '+dados[i].cidade+'</p><p>Estado: '+dados[i].estado+'</p></td>';
-                text += '<td class="dt-center"><p>Data de Contratação: '+dados[i].dt_contrato+'</p><p>Salário: '+dados[i].salario+'</p></td>';
-                if((dados[i].crm != null && dados[i].crm != '') && (dados[i].crm != undefined && dados[i].crm != '')){
-                    text += '<td class="dt-center"><p>CRM: '+dados[i].crm+'</p><p>Especialidade: '+dados[i].especialidade+'</p></td>';
-                } else {
-                    text += '<td class="dt-center"> - </td>';
-                }
-    
+                text += '<td class="dt-center">'+dados[i].CEP+'</td>'
+                text += '<td class="dt-center">'+dados[i].logradouro+'</td>'
+                text += '<td class="dt-center">'+dados[i].cidade+'</td>'
+                text += '<td class="dt-center">'+dados[i].estado+'</td>'
+
                 let el = document.createElement('tr');
-    
+
                 el.innerHTML = text;
-    
+
                 tabela.appendChild(el);
             }
 
         }
         xhr.send();
-
     </script>
 </body>
 </html>

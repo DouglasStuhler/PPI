@@ -1,24 +1,40 @@
-async function buscaEndereco(cep) {
+async function busca_endereco(cep){
 
   if (cep.length != 9) return;
 
   try {
-    let response = await fetch("../model/Endereco.php?cep=" + cep);
-    if (!response.ok) throw new Error(response.statusText);
-    var endereco = await response.json();
-  }
-  catch (error) {
-    console.error(error);
-    return;
-  }
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", "../cadastro/controlador_endereco.php?acao=getEndereco&cep="+cep);
+    xhr.responseType = 'json';
+  
+    xhr.onload = function () {
+    var x = xhr.response;
+    debugger;
 
-  let form = document.querySelector("form");
-  form.logradouro.value = endereco.logradouro;
-  form.cidade.value = endereco.cidade;
-  form.estado.value = endereco.estado;
+    if (xhr.status != 200 || xhr.response === null) {
+      console.log("Resposta não obtida");
+      return;
+    }
+
+    const endereco = xhr.response;
+    let form = document.querySelector("#formCad");
+    form.logradouro.value = endereco.logradouro;
+    form.cidade.value = endereco.cidade;
+    form.estado.value = endereco.estado;
+   };
+
+    xhr.onerror = function () {
+      console.error("Requisição não finalizada");
+      return;
+    };
+
+   xhr.send();
+  } catch (error) {
+    console.error('Erro ao fazer requisição:', error);
+  }
 }
 
 window.onload = function () {
   const inputCep = document.querySelector("#cep");
-  inputCep.onkeyup = () => buscaEndereco(inputCep.value);
+  inputCep.onkeyup = () => busca_endereco(inputCep.value);
 }

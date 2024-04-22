@@ -11,6 +11,12 @@
 
     switch ($acao){
         case 'listagem_agenda_pessoal':
+            $emailMedico = $_GET['email'] ?? "";
+
+            $dados = Agenda::getAgendamentosMedico($pdo, $emailMedico);
+
+            header('Content-type: application/json');
+            echo json_encode($dados);
             break;
         case 'listagem_agenda':
             $dados = Agenda::getAgendamentos($pdo);

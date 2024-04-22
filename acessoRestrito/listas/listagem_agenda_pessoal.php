@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+
+$email = $_SESSION['user'] ?? "";
+
+if(trim($email) == "")
+    header("location: ../../login.html");
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -25,7 +35,7 @@
         </ul>
     </nav>
     <main>
-        <h1>Lista de Agendamentos</h1>
+        <h1>Meus Agendamentos</h1>
         <div class="table-responsive">
             <table id="tabela" class="table table-striped table-hover">
                 <thead>
@@ -48,10 +58,9 @@
     <footer>
         <p>&copy; Todos os direitos são reservados à Vitalize.</p>
     </footer>
-
     <script>
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', 'controlador.php?acao=listagem_agenda');
+        xhr.open('GET', 'controlador.php?acao=listagem_agenda_pessoal&email=<?php echo $email;?>');
         xhr.responseType = 'json';
 
         xhr.onload = function (){
@@ -73,7 +82,7 @@
                 text += '<td class="dt-center">'+dados[i].nome+'</td>'
                 text += '<td class="dt-center">'+dados[i].dt_agenda+'</td>'
                 text += '<td class="dt-center">'+dados[i].hr_agenda+'</td>'
-                text += '<td class="dt-center"><p>Email: '+dados[i].email+'</p><p>Telefone: '+dados[i].telefone+'</p></td>';
+                text += '<td class="dt-center"><p>Email: '+dados[i].email+'</p></td>';
                 text += '<td class="dt-center">'+dados[i].especialidade+'</td>'
                 text += '<td class="dt-center">'+dados[i].nm_medico+'</td>'
                 text += '<td class="dt-center">'+dados[i].sexo+'</td>'
@@ -86,7 +95,6 @@
             }
         }
         xhr.send();
-
     </script>
 </body>
 </html>

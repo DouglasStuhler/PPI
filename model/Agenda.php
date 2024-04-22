@@ -147,36 +147,38 @@
             }
         }
 
-        function getAgendamentosMedico($pdo, $medico){
+        static function getAgendamentosMedico($pdo, $medico){
             try{
                 $sql = <<<SQL
                     SELECT 
-                        Agenda.dt_agenda, Agenda.hr_agenda, Agenda.nome, Agenda.sexo, Agenda.email, Agenda.id_medico, PessoaMedico.nome, Medico.especialidade
+                        Agenda.id_agenda, Agenda.dt_agenda, Agenda.hr_agenda, Agenda.nome AS nome_paciente, Agenda.sexo, Agenda.email, Agenda.id_medico, PessoaMedico.nome, Medico.especialidade
                     FROM Agenda
                     JOIN Medico ON Medico.id_medico = Agenda.id_medico
                     JOIN Funcionario ON Funcionario.id_funcionario = Medico.id_funcionario
                     JOIN Pessoa PessoaMedico ON PessoaMedico.id_pessoa = Funcionario.id_pessoa
-                    WHERE Agenda.dt_agenda >= date('Y-m-d') 
-                        AND Agenda.hr_agenda >= date('H:i:s')
-                        AND Agenda.id_medico = $medico
+                    WHERE ((Agenda.dt_agenda = ? AND Agenda.hr_agenda >= ?)
+                        OR (Agenda.dt_agenda > ?))
+                        AND PessoaMedico.email = ?
                     ORDER BY Agenda.dt_agenda, Agenda.hr_agenda
                 SQL;
 
-                $resp = $pdo->query($sql);
+                $resp = $pdo->prepare($sql);
+                $resp->execute([date('Y-m-d'),date('H:i:s'),date('Y-m-d'),$medico]);
 
                 $arrayAgendamento = [];
                 while($row = $resp->fetch()){
-                    $dt_agenda = new DateTime($row['Agenda']['dt_agenda']);
+                    $id_agenda = $row['id_agenda'];
+                    $dt_agenda = new DateTime($row['dt_agenda']);
                     $dt_agenda = $dt_agenda->format('d-m-Y');
 
-                    $hr_agenda = $row['Agenda']['hr_agenda'];
+                    $hr_agenda = $row['hr_agenda'];
 
-                    $nome = htmlspecialchars($row['Agenda']['nome']);
-                    $sexo = htmlspecialchars($row['Agenda']['sexo']);
-                    $email = htmlspecialchars($row['Agenda']['email']);
-                    $id_medico = htmlspecialchars($row['Agenda']['id_medico']);
-                    $nm_medico = htmlspecialchars($row['PessoaMedico']['nome']);
-                    $especialidade = htmlspecialchars($row['Medico']['especialidade']);
+                    $nome = htmlspecialchars($row['nome_paciente']);
+                    $sexo = htmlspecialchars($row['sexo']);
+                    $email = htmlspecialchars($row['email']);
+                    $id_medico = htmlspecialchars($row['id_medico']);
+                    $nm_medico = htmlspecialchars($row['nome']);
+                    $especialidade = htmlspecialchars($row['especialidade']);
 
                     $agendamento = new Agenda(
                         $dt_agenda,
@@ -188,6 +190,7 @@
                     );
 
                     $agendamento->setInfoMedico($nm_medico, $especialidade);
+                    $agendamento->setIdAgenda($id_agenda);
 
                     $arrayAgendamento[] = $agendamento;
                 }
