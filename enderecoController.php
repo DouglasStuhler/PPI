@@ -25,12 +25,12 @@ $novoEndereco = new Endereco(
 $resultado = $novoEndereco->insertEndereco($pdo);
 
 if ($resultado === 0) {
-    echo '<script>alert("Endereço cadastrado com sucesso!");</script>';
-    header("location: index.html");
+    header('Content-type: application/json');
+    echo json_encode($resultado);
 } elseif ($resultado === 1) {
-    echo '<script>alert("Endereço já cadastrado.");</script>';
-    header("location: endereco.html");
+    header('Content-type: application/json');
+    echo json_encode($resultado);
 } else {
-    echo '<script>alert("Falha ao cadastrar o endereço, tente novamente!");</script>';
-    header("location: endereco.html");
+    header('Content-type: application/json');
+    echo json_encode($resultado);
 }

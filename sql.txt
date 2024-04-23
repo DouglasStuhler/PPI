@@ -1,0 +1,11 @@
+CREATE TABLE `Agenda` ( `id_agenda` INT NOT NULL AUTO_INCREMENT , `dt_agenda` DATE NOT NULL , `hr_agenda` TIME NOT NULL , `nome` VARCHAR(90) NOT NULL , `sexo` CHAR(1) NOT NULL , `email` VARCHAR(80) NOT NULL , `id_medico` INT NOT NULL, PRIMARY KEY (`id_agenda`) );
+
+CREATE TABLE `Pessoa` ( `id_pessoa` INT NOT NULL AUTO_INCREMENT , `nome` VARCHAR(90) NOT NULL , `sexo` CHAR(1) NOT NULL , `email` VARCHAR(80) NOT NULL , `telefone` CHAR(14) NOT NULL , `CEP` CHAR(9) NOT NULL , `logradouro` VARCHAR(60) NOT NULL , `cidade` VARCHAR(40) NOT NULL , `estado` VARCHAR(40) NOT NULL, PRIMARY KEY (`id_pessoa`) );
+
+CREATE TABLE `Funcionario` ( `id_funcionario` INT NOT NULL AUTO_INCREMENT , `dt_contrato` DATE NOT NULL , `salario` FLOAT NOT NULL , `senhaHash` VARCHAR(40) NOT NULL , `id_pessoa` INT NOT NULL, PRIMARY KEY (`id_funcionario`));
+
+CREATE TABLE `Paciente` ( `id_paciente` INT NOT NULL AUTO_INCREMENT , `peso` FLOAT NOT NULL , `altura` FLOAT NOT NULL , `tp_sangue` VARCHAR(3) NOT NULL , `id_pessoa` INT NOT NULL , PRIMARY KEY (`id_paciente`));
+
+CREATE TABLE `Medico` ( `id_medico` INT NOT NULL AUTO_INCREMENT , `especialidade` VARCHAR(50) NOT NULL , `crm` VARCHAR(15) NOT NULL , `id_funcionario` INT NOT NULL, PRIMARY KEY (`id_medico`) );
+
+CREATE TABLE `Enderecos` ( `CEP` CHAR(9) NOT NULL , `logradouro` VARCHAR(60) NOT NULL , `cidade` VARCHAR(40) NOT NULL , `estado` VARCHAR(40) NOT NULL, PRIMARY KEY (`CEP`));

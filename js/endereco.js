@@ -19,15 +19,15 @@ function insertEndereco(form) {
 
         
         const result = xhr.response;
-        if (result.success){
+        if (result == 0){
             alert('Cadastro de endereço efetuado com sucesso');
-            window.location.assign('acessoRestrito');
+            window.location.assign('index');
         } else {
             alert('Erro ao efetuar o cadastro de endereço');
-            cep.value = "";
-            logr.value = "";
-            estado.value = "";
-            cidade.value = "";
+            form.cep.value = "";
+            form.logr.value = "";
+            form.estado.value = "";
+            form.cidade.value = "";
             
         }
 
